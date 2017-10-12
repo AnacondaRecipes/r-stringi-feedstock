@@ -35,6 +35,7 @@ requirements:
     - {{ compiler('c') }}        # [not win]
     - {{ compiler('cxx') }}      # [not win]
     - {{native}}toolchain        # [win]
+    - {{native}}icu-56           # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}autoconf
     - {{posix}}automake-wrapper  # [win]
@@ -45,6 +46,7 @@ requirements:
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
+    - {{native}}icu-56           # [win]
 
 test:
   commands:
