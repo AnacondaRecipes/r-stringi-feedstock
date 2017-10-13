@@ -42,6 +42,7 @@ requirements:
     - {{posix}}automake          # [not win]
     - {{posix}}pkg-config
     - {{posix}}make
+    - {{native}}icu-56           # [win]
 
   run:
     - r-base
