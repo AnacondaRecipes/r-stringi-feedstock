@@ -13,11 +13,10 @@ source:
     - https://cran.r-project.org/src/contrib/stringi_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/stringi/stringi_{{ version }}.tar.gz
   sha256: 651e85fc4ec6cf71ad8a4347f2bd4b00a490cf9eec20921a83bf5222740402f2
+  # Not yet tested to make sure this patch does not break on non-Windows.
+  patches:
+    - 0001-Win32-Fix-quoting-for-R-version-checks.patch
 
-
-  # patches:
-   # List any patch files here
-   # - fix.patch
 
 build:
   # If this is a new build for the same version, increment the build number.
@@ -35,19 +34,23 @@ requirements:
     - {{ compiler('c') }}        # [not win]
     - {{ compiler('cxx') }}      # [not win]
     - {{native}}toolchain        # [win]
-    - {{native}}icu-56           # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}autoconf
+    - {{posix}}grep              # [win]
+    - {{posix}}sed               # [win]
     - {{posix}}automake-wrapper  # [win]
     - {{posix}}automake          # [not win]
-    - {{posix}}pkg-config
     - {{posix}}make
-    - {{native}}icu-56           # [win]
+    # stringi INSTALL recommends using their own bundled ICU.
+    # and I could not get it to work with ours (it insists on
+    # using a data file while ours bundles that data into the
+    # libraries.
+    # - {{posix}}pkg-config
+    # - {{native}}icu              # [win]
 
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
-    - {{native}}icu-56           # [win]
 
 test:
   commands:
