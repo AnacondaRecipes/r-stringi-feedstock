@@ -1,4 +1,4 @@
-{% set version = '1.1.5' %}
+{% set version = '1.1.6' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,11 +12,11 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/stringi_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/stringi/stringi_{{ version }}.tar.gz
-  sha256: 651e85fc4ec6cf71ad8a4347f2bd4b00a490cf9eec20921a83bf5222740402f2
-  # Not yet tested to make sure this patch does not break on non-Windows.
+  sha256: 9590360b96627b18d7bed273deedabda4283dbae7d41c0a0ba78a58e6aa95188
+
+
   patches:
     - 0001-Win32-Fix-quoting-for-R-version-checks.patch
-
 
 build:
   # If this is a new build for the same version, increment the build number.
@@ -35,18 +35,13 @@ requirements:
     - {{ compiler('cxx') }}      # [not win]
     - {{native}}toolchain        # [win]
     - {{posix}}filesystem        # [win]
-    - {{posix}}autoconf
-    - {{posix}}grep              # [win]
     - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
+    - {{posix}}autoconf
     - {{posix}}automake-wrapper  # [win]
     - {{posix}}automake          # [not win]
+    - {{posix}}pkg-config
     - {{posix}}make
-    # stringi INSTALL recommends using their own bundled ICU.
-    # and I could not get it to work with ours (it insists on
-    # using a data file while ours bundles that data into the
-    # libraries.
-    # - {{posix}}pkg-config
-    # - {{native}}icu              # [win]
 
   run:
     - r-base
@@ -85,8 +80,8 @@ extra:
 # The original CRAN metadata for this package was:
 
 # Package: stringi
-# Version: 1.1.5
-# Date: 2017-04-07
+# Version: 1.1.6
+# Date: 2017-11-10
 # Title: Character String Processing Facilities
 # Description: Allows for fast, correct, consistent, portable, as well as convenient character string/text processing in every locale and any native encoding. Owing to the use of the ICU library, the package provides R users with platform-independent functions known to Java, Perl, Python, PHP, and Ruby programmers. Available features include: pattern searching (e.g., with ICU Java-like regular expressions or the Unicode Collation Algorithm), random string generation, case mapping, string transliteration, concatenation, Unicode normalization, date-time formatting and parsing, etc.
 # URL: http://www.gagolewski.com/software/stringi/ http://site.icu-project.org/ http://www.unicode.org/
@@ -101,10 +96,10 @@ extra:
 # Maintainer: Marek Gagolewski <gagolews@rexamine.com>
 # RoxygenNote: 6.0.1
 # NeedsCompilation: yes
-# Packaged: 2017-04-07 09:50:47 UTC; gagolews
+# Packaged: 2017-11-10 13:42:04 UTC; gagolews
 # License_is_FOSS: yes
 # Repository: CRAN
-# Date/Publication: 2017-04-07 13:08:03 UTC
+# Date/Publication: 2017-11-17 13:13:14 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
