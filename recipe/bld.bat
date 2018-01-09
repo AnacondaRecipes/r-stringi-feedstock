@@ -1,7 +1,4 @@
-@rem We want the Unix configure script to be used.
-del configure.win
-copy configure configure.win
-"%R%" CMD INSTALL --build . --configure-args="--disable-pkg-config"
+"%R%" CMD INSTALL --build .
 
 if errorlevel 1 exit 1
 
