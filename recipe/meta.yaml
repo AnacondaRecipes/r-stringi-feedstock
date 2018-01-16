@@ -46,6 +46,7 @@ requirements:
 
   host:
     - r-base
+    - {{native}}icu              # [linux]
 
   run:
     - r-base
