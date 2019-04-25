@@ -1,4 +1,4 @@
-{% set version = '1.2.4' %}
+{% set version = '1.4.3' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,7 +11,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/stringi_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/stringi/stringi_{{ version }}.tar.gz
-  sha256: 01570a200a25bde62c47b241636e67d73425efa10b924b63959a867796ea86f8
+  sha256: 13cecb396b700f81af38746e97b550a1d9fda377ca70c78f6cdfc770d33379ed
 
   patches:
     - 0001-Win32-Fix-quoting-for-R-version-checks.patch
@@ -44,7 +44,6 @@ requirements:
 
   host:
     - r-base
-    - {{native}}icu              # [not win]
 
   run:
     - r-base
@@ -65,14 +64,14 @@ test:
 about:
   home: http://www.gagolewski.com/software/stringi/ http://site.icu-project.org/ http://www.unicode.org/
   license: file LICENSE (FOSS)
-  summary: 'Allows for fast, correct, consistent, portable, as well as convenient character string/text
+  summary: 'Fast, correct, consistent, portable, as well as convenient character string/text
     processing in every locale and any native encoding. Owing to the use of the ''ICU''
-    library, the package provides ''R'' users with platform-independent functions known
-    to ''Java'', ''Perl'', ''Python'', ''PHP'', and ''Ruby'' programmers. Available
-    features include: pattern searching (e.g., with ''Java''-like regular expressions
-    or the ''Unicode'' collation algorithm), random string generation, case mapping,
-    string transliteration, concatenation, Unicode normalization, date-time formatting
-    and parsing, and many more.'
+    (International Components for Unicode) library, the package provides ''R'' users
+    with platform-independent functions known to ''Java'', ''Perl'', ''Python'', ''PHP'',
+    and ''Ruby'' programmers. Available features include: pattern searching (e.g., with
+    ''Java''-like regular expressions or the ''Unicode'' collation algorithm), random
+    string generation, case mapping, string transliteration, concatenation, Unicode
+    normalization, date-time formatting and parsing, and many more.'
 
   license_family: OTHER
 
@@ -84,10 +83,10 @@ extra:
 # The original CRAN metadata for this package was:
 
 # Package: stringi
-# Version: 1.2.4
-# Date: 2018-07-20
+# Version: 1.4.3
+# Date: 2019-03-12
 # Title: Character String Processing Facilities
-# Description: Allows for fast, correct, consistent, portable, as well as convenient character string/text processing in every locale and any native encoding. Owing to the use of the 'ICU' library, the package provides 'R' users with platform-independent functions known to 'Java', 'Perl', 'Python', 'PHP', and 'Ruby' programmers. Available features include: pattern searching (e.g., with 'Java'-like regular expressions or the 'Unicode' collation algorithm), random string generation, case mapping, string transliteration, concatenation, Unicode normalization, date-time formatting and parsing, and many more.
+# Description: Fast, correct, consistent, portable, as well as convenient character string/text processing in every locale and any native encoding. Owing to the use of the 'ICU' (International Components for Unicode) library, the package provides 'R' users with platform-independent functions known to 'Java', 'Perl', 'Python', 'PHP', and 'Ruby' programmers. Available features include: pattern searching (e.g., with 'Java'-like regular expressions or the 'Unicode' collation algorithm), random string generation, case mapping, string transliteration, concatenation, Unicode normalization, date-time formatting and parsing, and many more.
 # URL: http://www.gagolewski.com/software/stringi/ http://site.icu-project.org/ http://www.unicode.org/
 # BugReports: http://github.com/gagolews/stringi/issues
 # SystemRequirements: ICU4C (>= 52, optional)
@@ -96,14 +95,14 @@ extra:
 # Imports: tools, utils, stats
 # Biarch: TRUE
 # License: file LICENSE
-# Author: Marek Gagolewski [aut, cre], Bartek Tartanus [ctb], and other contributors (stringi source code); IBM and other contributors (ICU4C source code); Unicode, Inc. (Unicode Character Database)
-# Maintainer: Marek Gagolewski <gagolews@rexamine.com>
-# RoxygenNote: 6.0.1
+# Author: Marek Gagolewski [aut, cre] (<https://orcid.org/0000-0003-0637-6028>), Bartek Tartanus [ctb], and other contributors (stringi source code); IBM, Unicode, Inc., and other contributors (ICU4C source code); Unicode, Inc. (Unicode Character Database)
+# Maintainer: Marek Gagolewski <marek@gagolewski.com>
+# RoxygenNote: 6.1.1
 # NeedsCompilation: yes
-# Packaged: 2018-07-20 11:58:52 UTC; gagolews
+# Packaged: 2019-03-12 21:12:07 UTC; gagolews
 # License_is_FOSS: yes
 # Repository: CRAN
-# Date/Publication: 2018-07-20 17:30:03 UTC
+# Date/Publication: 2019-03-12 23:20:03 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
